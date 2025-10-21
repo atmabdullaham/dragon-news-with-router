@@ -10,7 +10,7 @@ const Navbar = () => {
       })
       .catch((error) => {
         // An error happened.
-        console.log(error);
+        // console.log(error);
       });
     5;
   };

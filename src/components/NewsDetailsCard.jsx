@@ -9,7 +9,7 @@ const NewsDetailsCard = () => {
   useEffect(() => {
     const newsDetails = data.find((singleNews) => singleNews.id == id);
     setNews(newsDetails);
-    console.log(newsDetails);
+    // console.log(newsDetails);
   }, [data, id]);
   return (
     <div>
