@@ -13,15 +13,17 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  console.log(user);
+  const [loading, setLoading] = useState(true);
 
   //   register
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // sign in user
   const loginUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   //   logout
@@ -35,6 +37,7 @@ const AuthProvider = ({ children }) => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         setUser(currentUser);
+        setLoading(false);
         // ...
       } else {
         // User is signed out
@@ -52,6 +55,8 @@ const AuthProvider = ({ children }) => {
     createUser,
     loginUser,
     logOut,
+    loading,
+    setLoading,
   };
   return <AuthContext value={authInfo}>{children}</AuthContext>;
 };
